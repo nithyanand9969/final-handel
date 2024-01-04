@@ -1,0 +1,67 @@
+<div class="flex h-screen bg-gray-100">
+  <!-- Sidebar -->
+  <div class="w- bg-blue-800 text-white">
+    <app-user-side-nav></app-user-side-nav>
+  </div>
+
+  <div class="flex-1 flex flex-col">
+    <!-- Header -->
+    <div class="bg-white p-4 border-b flex justify-between items-center">
+      <h2 class="text-2xl font-semibold">Welcome, {{ loggedInUserName }}</h2>
+
+      <!-- Select Entity -->
+      <app-dropdownentity/>
+    </div>
+
+    <!-- Top Section -->
+    <div class="bg-white p-4 border-b mb-4 flex justify-end">
+      <button class="bg-blue-600 text-white py-2 px-4 rounded focus:outline-none mr-4" (click)="logout()">
+        <span>Logout</span>
+      </button>
+      <button class="bg-green-600 text-white py-2 px-4 rounded focus:outline-none" (click)="servicerequest()">
+        <span>Request Support</span>
+      </button>
+    </div>
+
+
+      <!-- Chart Section -->
+      <div class="flex justify-evenly p-2 h-50">
+        <!-- Bar Chart -->
+        <div class="w-1/1 bg-gray-200 rounded-lg p-2">
+          <h2 class="text-lg font-semibold mb-4">Open / Closed Transactions (Bar Chart)</h2>
+          <canvas id="barChart" class="w-full"></canvas>
+        </div>
+      
+        <!-- Line Chart -->
+        <div class="w-1/1 bg-gray-200 rounded-lg p-2">
+          <h2 class="text-lg font-semibold mb-4">Open / Closed Transactions (Line Chart)</h2>
+          <canvas id="lineChart" class="w-full"></canvas>
+        </div>
+      </div>
+      
+      <div id="scrollToBottom" class="flex justify-center items-center bg-white p-4 border-b mb-4">
+        <div>
+          <label class="font-semibold"></label>
+          <div class="relative">
+            <select class="block appearance-none w-64 bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+              <option disabled [selected]="true" [ngStyle]="getBackgroundColor('default')">Action Needed</option>
+              <option *ngFor="let entity of entityList" [value]="entity.name" [ngStyle]="getBackgroundColor(entity.status)">
+                {{ entity.name }}
+              </option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M6.293 8.293a1 1 0 011.414 0L10 10.586l2.293-2.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+  
+    
+      
+      
+    </div>
+  </div>
+  

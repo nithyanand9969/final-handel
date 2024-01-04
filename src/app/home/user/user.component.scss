@@ -1,0 +1,144 @@
+.user {
+  color: rgb(0, 0, 0);
+  margin-left: 400px;
+  margin-top: 10px;
+  font-size: 25px;
+  margin-bottom: 10px;
+  
+}
+
+.register {
+  color: rgb(0, 0, 0);
+  margin-top: 0px;
+}
+
+table {
+  margin-left: 80px;
+  border: 1.5px solid rgb(0, 0, 0);
+
+  width: 100%;
+}
+
+table td,
+table th {
+  border: 1.5px solid rgb(0, 0, 0);
+  padding: 10px;
+  min-height: 170px;
+  width: 100%; /* Set width to 100% for responsiveness */
+}
+
+table thead {
+  background-color: blue;
+  color: antiquewhite;
+  padding: 15px;
+  width: 150px;
+  margin-left: 10px;
+}
+
+table tbody {
+  background-color: rgb(1, 38, 69);
+  color: antiquewhite;
+  overflow-y: auto;
+}
+
+/* Simplified and adjusted hover styles */
+.active-corporate,
+.active-trader,
+.active-intermediary {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.active-corporate:hover,
+.active-trader:hover,
+.active-intermediary:hover {
+  cursor: pointer;
+  color: rgb(14, 88, 237);
+  background-color: rgb(252, 252, 252);
+}
+
+/* Simplified and adjusted positioning for columns */
+.col-1,
+.col-2,
+.col-3 {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 300px;
+  padding-top: 20px;
+  position: fixed;
+  
+}
+
+.form-input {
+  height: 35px;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  border: 1px solid rebeccapurple;
+  color: aliceblue;
+}
+
+/* Adjusted button styles for consistency */
+.form-button,
+.form-button-1,
+.form-button-2 {
+  height: 35px;
+  border: 1px solid rgb(0, 121, 48);
+  cursor: pointer;
+  margin-top: 70px;
+  margin-left: 20px; /* Adjusted margin for consistent spacing */
+  width: auto; /* Set width to auto for responsiveness */
+  border-radius: 10px; /* Applied common border-radius */
+}
+
+/* Adjusted styles for the user view */
+.userview {
+  display: flex;
+  padding: 2px;
+  flex-wrap: wrap; 
+  
+  margin-left: 80px;
+  margin-top: 40px;
+  position: fixed;
+  align-items: center;
+  height: 600px;
+  justify-content: space-around;
+ 
+  
+}
+
+/* Adjusted width and margin for the registered sections */
+.corporateregister,
+.tradereregister,
+.intermediaryregister {
+  width: 300px;
+  margin: auto;
+  margin-top: 0px;
+}
+
+.active {
+  width: 180px;
+  font-size: medium;
+  padding-left: 40px;
+}
+
+/* Adjusted alignment for table data */
+.tab-data {
+  align-items: center;
+  margin-left: 50px;
+}
+
+tbody {
+  text-align: center;
+}
+.userinfo {
+  cursor: pointer;
+}
+.userinfo:hover {
+  background-color: aliceblue;
+  color: blue;
+  transition: background-color 0.3s cubic-bezier(0.39, 0.575, 0.565, 1),
+    color 0.3s cubic-bezier(0.39, 0.575, 0.565, 1),
+    transform 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+  transform: scale(1);
+}

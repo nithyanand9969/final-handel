@@ -1,0 +1,117 @@
+.main-container {
+  display: flex;
+  .side-nav {
+    width: 280px;
+    min-width: 230px;
+    min-height: calc(100vh - 70px);
+    background-color: #113c60;
+    color: #fff;
+    box-shadow: 5px 5px 5px #939393;
+    @media only screen and (max-width: 1300px) {
+      width: 100px;
+      min-width: 100px;
+    }
+  }
+  .main {
+    padding: 30px;
+    display: flex;
+    justify-content: space-around;
+    width: 1200px;
+   
+  }
+}
+
+
+.logout-btn {
+  border: none;
+  display: block;
+  position: relative;
+  background-color: rgb(1, 38, 69);;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 5px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: 200;
+  margin-top: -20px;
+  margin-left: 5px;
+}
+.Request-button{
+  display: block;
+  border: none;
+  background-color: rgb(39, 128, 9);
+  color: #fff;
+  padding: 10px 10px;
+  border-radius: 5px;
+   width: 100%;
+   align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: 200;
+  margin-top: 20px;
+  margin-right:5px;
+  margin-left: 5px;
+ 
+  
+
+}
+
+.logout-btn:hover {
+  background-color: #001f3f; /* Darker shade of navy on hover */
+}
+
+.dropdown {
+  border-width: 2px;
+  height: 35px;
+  width: 150px;
+  border-color: black;
+  border-width: 3px;
+  padding-left: 30px;
+  background-color: #959799;
+  color: rgb(13, 21, 105);
+  padding-top: 3px;
+}
+
+.hr {
+  border-width: 2px;
+  background-color: black;
+}
+
+.dropdown-lable {
+  position: relative;
+  display: block;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.dropdown-container {
+  margin-left: 290px;
+  margin-top: 8px;
+}
+
+.graph-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; /* Adjust height as needed */
+  width: 80%; /* Adjust width as needed */
+  margin: 0 auto;
+}
+.chart {
+  margin-top: 80px; /* Adjust as needed */
+  text-align: right;
+  margin-right: -250px;
+
+}
+.chart-line{
+
+  margin-top: 80px; /* Adjust as needed */
+  text-align: right;
+  margin-right: -200px;
+
+
+}

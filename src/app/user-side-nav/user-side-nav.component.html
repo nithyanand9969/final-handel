@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<div class="nav-items">
+  <div class="nav-item" routerLink="/users">
+    <span>My Dashboard</span>
+  </div>
+
+  <div class="nav-item" routerLink="/postnewrequirment">
+    <span>Post New Requirement</span>
+  </div>
+
+  <div routerLink="/transcation">
+  <button class="dropdown-btn" (click)="toggleDropdown($event)">Transcation 
+ <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+    <a class="link-drop" href="/transcation">All Transcation</a>
+    <a  class="link-drop" href="#">Manage Transcation </a>
+    <a  class="link-drop" href="#">Invoice</a>
+    <a  class="link-drop" href="#">Payment</a>
+    <a  class="link-drop" href="#">Finacial Ledger</a>
+
+  </div>
+</div>
+
+  <div class="nav-item" routerLink="/setting">
+    <span>Setting</span>
+  </div>
+ 
+  <div class="nav-item" routerLink="company-info">
+    <span>Company Info</span>
+  </div>
+</div>
+

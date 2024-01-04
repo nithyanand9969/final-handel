@@ -1,0 +1,29 @@
+<div class="modal">
+  <div class="modal-content">
+    <h2>Request Callback</h2>
+    <!-- Your form fields -->
+    <form (ngSubmit)="submitCallback()">
+      <!-- Form fields (e.g., name, phone number, message) -->
+      <input
+        type="text"
+        name="name"
+        [(ngModel)]="callbackData.name"
+        placeholder="Name"
+      />
+      <input
+        type="tel"
+        name="phoneNumber"
+        [(ngModel)]="callbackData.phoneNumber"
+        placeholder="Phone Number"
+      />
+      <textarea
+        name="message"
+        [(ngModel)]="callbackData.message"
+        placeholder="Message"
+      ></textarea>
+
+      <button type="submit">Submit</button>
+      <button type="button" (click)="closeCallbackForm()">Close</button>
+    </form>
+  </div>
+</div>

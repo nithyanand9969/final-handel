@@ -1,0 +1,141 @@
+<div class="flex h-screen bg-gray-100">
+  <!-- Sidebar -->
+  <div class="w- bg-blue-800 text-white">
+    <app-user-side-nav></app-user-side-nav>
+  </div>
+
+  <div class="flex-1 flex flex-col">
+    <!-- Header -->
+    <div class="bg-white p-4 border-b flex justify-between items-center">
+      <h2 class="text-2xl font-semibold flex-grow-1">Welcome, {{ loggedInUserName }}</h2>
+    
+      <!-- Include app-dropdownentity component -->
+      <app-dropdownentity class="ml-4"></app-dropdownentity>
+    </div>
+
+    <!-- Top Section -->
+    <div class="bg-white p-4 border-b mb-4 flex justify-end">
+      <button
+        class="bg-blue-600 text-white py-2 px-4 rounded focus:outline-none mr-4"
+        (click)="logout()"
+      >
+        <span>Logout</span>
+      </button>
+      <button
+        class="bg-green-600 text-white py-2 px-4 rounded focus:outline-none"
+        (click)="servicerequest()"
+      >
+        <span>Request Support</span>
+      </button>
+    </div>
+
+    <div class="container mt-5 p-5">
+      <div class="row px-5">
+        <div class="col-md-12">
+          <div class="mb-3">
+            <label class="form-label p-5">Select Material Type:</label>
+            <div
+              class="btn-group ml-5 mt-5 flex-1 flex-row"
+              role="group"
+              aria-label="Material Type"
+            >
+              <input
+                type="radio"
+                id="domesticMaterial"
+                class="btn-check"
+                name="materialType"
+                [(ngModel)]="selectedMaterial"
+                value="domestic"
+              />
+              <label class="btn btn-outline-primary" for="domesticMaterial"
+                >Domestic Material</label
+              >
+
+              <input
+                type="radio"
+                id="internationalMaterial"
+                class="btn-check"
+                name="materialType"
+                [(ngModel)]="selectedMaterial"
+                value="international"
+              />
+              <label class="btn btn-outline-primary" for="internationalMaterial"
+                >International Material</label
+              >
+            </div>
+          </div>
+
+          <form
+            [formGroup]="material"
+            (ngSubmit)="submitData()"
+            enctype="multipart/form-data"
+          >
+            <div class="flex">
+              <div class="w-1/3 p-4">
+                <label for="material" class="text-gray-600">Material</label>
+                <input
+                  type="text"
+                  class="form-input"
+                  formControlName="material"
+                  placeholder="Please enter Material"
+                />
+
+                <label for="supplier" class="text-gray-600 mt-4"
+                  >Supplier</label
+                >
+                <input
+                  type="text"
+                  class="form-input"
+                  formControlName="supplier"
+                  name="supplier"
+                  placeholder="Please Enter the Supplier Name"
+                />
+
+                <label for="paymentmode" class="text-gray-600 mt-4"
+                  >Terms Of Payment/Credit Period</label
+                >
+                <input
+                  type="text"
+                  class="form-input"
+                  formControlName="payment"
+                  name="payment"
+                  placeholder="Please enter the Payment Mode"
+                />
+              </div>
+
+              <div class="w-1/3 p-4">
+                <label for="quantity" class="text-gray-600">Quantity</label>
+                <input
+                  type="text"
+                  class="form-input"
+                  formControlName="quantity"
+                  name="quantity"
+                  placeholder="Please enter Quantity"
+                />
+
+                <label for="unitprice" class="text-gray-600 mt-4"
+                  >Unit Price</label
+                >
+                <input
+                  type="text"
+                  class="form-input"
+                  formControlName="unitprice"
+                  name="unitprice"
+                  placeholder="Please enter Unit Price"
+                />
+              </div>
+            </div>
+
+            <div class="flex justify-center">
+              <button class="form-button mr-2" routerLink="/users">
+                Cancel
+              </button>
+              <button class="form-button-1 mr-2">Save</button>
+              <button class="form-button-2" type="submit">Create</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="contiainter">
+    <div class="main-container">
+        <div class="side-nav">
+            <app-side-nav></app-side-nav>
+        </div>
+        <div class="main">
+            <!-- Show the 'Welcome' message only if it's the admin dashboard route -->
+            <h3 *ngIf="isDashboardRouteActive()">Welcome {{ loggedInUserName }}</h3>
+            <router-outlet></router-outlet>
+            <app-dashboard *ngIf="isDashboardRouteActive()"></app-dashboard>
+        </div>
+    </div>
+</div>

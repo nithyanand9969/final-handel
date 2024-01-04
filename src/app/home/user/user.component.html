@@ -1,0 +1,87 @@
+<div class="container">
+  <h1 class="user">User Details</h1>
+
+  <div class="userview">
+    <!-- Corporate Register Table -->
+    <table class="corporateregister">
+      <thead>
+        <tr>
+          <th class="active-corporate" routerLink="/admin/corporateregister">
+            Onboard New Corporate
+          </th>
+        </tr>
+        <tr>
+          <th>
+            <h1 class="active">Active Corporate</h1>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let registrationEntity of getUserDetails[0]?.registrationEntities
+          "
+        >
+          <td class="userinfo" routerLink="/admin/userinfo">
+            {{ registrationEntity.entityName }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Trader Register Table -->
+    <table class="tradereregister">
+      <thead>
+        <tr>
+          <th class="active-trader" routerLink="/admin/traderregister">
+            Onboard New Traders
+          </th>
+        </tr>
+        <tr>
+          <th>
+            <h1 class="active">Active Trader</h1>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Loop through 'corporateuser' array and display entity names -->
+        <tr
+          *ngFor="
+            let traderRegistration of getTraderDetails[0]?.tradersEntities
+          "
+        >
+          <td class="userinfo" routerLink="/admin/traderinfo">
+            {{ traderRegistration.entityName }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="intermediaryregister">
+      <thead>
+        <tr>
+          <th class="active-intermediary" routerLink="/admin/intermediator">
+            Onboard New Intermediary
+          </th>
+        </tr>
+        <tr>
+          <th>
+            <h1 class="active">Active Intermediary</h1>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let intermediaryEntities of getIntermediator[0]
+              ?.intermediaryEntities
+          "
+        >
+          <td class="userinfo" routerLink="/admin/usersinfo">
+            {{ intermediaryEntities.entityName }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

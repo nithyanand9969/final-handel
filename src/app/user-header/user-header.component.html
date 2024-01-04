@@ -1,0 +1,44 @@
+
+<div class="flex h-screen bg-gray-100">
+    <!-- Sidebar -->
+    <div class="w- bg-blue-800 text-white">
+      <app-user-side-nav></app-user-side-nav>
+    </div>
+  
+    <div class="flex-1 flex flex-col">
+      <!-- Header -->
+      <div class="bg-white p-4 border-b flex justify-between items-center">
+        <h2 class="text-2xl font-semibold">Welcome, {{ loggedInUserName }}</h2>
+  
+        <!-- Select Entity -->
+        <div class="flex items-center">
+          <div class="mr-10">
+            <label class="font-semibold">Select Entity</label>
+            <div class="w-full">
+              <mat-select placeholder="Select Entity">
+                <mat-option *ngFor="let entity of entityList" [value]="entity.name">
+                  {{ entity.name }}
+                </mat-option>
+              </mat-select>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+  
+      <!-- Top Section -->
+      <div class="bg-white p-4 border-b mb-4 flex justify-end">
+        <button
+          class="bg-blue-600 text-white py-2 px-4 rounded focus:outline-none mr-4"
+          (click)="logout()"
+        >
+          <span>Logout</span>
+        </button>
+        <button
+          class="bg-green-600 text-white py-2 px-4 rounded focus:outline-none"
+          (click)="servicerequest()"
+        >
+          <span>Request Support</span>
+        </button>
+      </div>
+  

@@ -1,0 +1,13 @@
+<div class="flex items-center">
+    <div class="mr-10">
+      <label class="font-semibold">Select Entity</label>
+      <div class="w-full">
+        <mat-select placeholder="Select Entity" [(value)]="selectUser" (selectionChange)="selectUser($event.value)" class="text-black">
+          <mat-option *ngFor="let entity of entityList" [value]="entity">
+            {{ entity }}
+          </mat-option>
+        </mat-select>
+      </div>
+    </div>
+  </div>
+  

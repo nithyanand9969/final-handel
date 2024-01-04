@@ -1,0 +1,155 @@
+<div class="flex h-screen bg-gray-100">
+  <!-- Sidebar -->
+  <div class="w- bg-blue-800 text-white">
+    <app-user-side-nav></app-user-side-nav>
+  </div>
+
+  <div class="flex-1 flex flex-col">
+    <!-- Header -->
+    <div class="bg-white p-4 border-b flex justify-between items-center">
+      <h2 class="text-2xl font-semibold">Welcome, {{ loggedInUserName }}</h2>
+
+      <!-- Select Entity -->
+      <app-dropdownentity/>
+    </div>
+
+
+    <!-- Top Section -->
+    <div class="bg-white p-4 border-b mb-4 flex justify-end">
+      <button
+        class="bg-blue-600 text-white py-2 px-4 rounded focus:outline-none mr-4"
+        (click)="Logout()"
+      >
+        <span>Logout</span>
+      </button>
+      <button
+        class="bg-green-600 text-white py-2 px-4 rounded focus:outline-none"
+        (click)="servicerequest()"
+      >
+        <span>Request Support</span>
+      </button>
+    </div>
+
+    <div class="container">
+      <div class="tab">
+        <button
+          class="tablink open"
+          (click)="openTab('open')"
+          [ngClass]="{ active: activeTab === 'open' }"
+        >
+          Open
+        </button>
+        <button
+          class="tablink closed"
+          (click)="openTab('closed')"
+          [ngClass]="{ active: activeTab === 'closed' }"
+        >
+          Closed
+        </button>
+        <button
+          class="tablink cancel"
+          (click)="openTab('cancel')"
+          [ngClass]="{ active: activeTab === 'cancel' }"
+        >
+          Cancel
+        </button>
+      </div>
+
+      <div
+        id="Home"
+        class="tabcontent"
+        [ngStyle]="{ display: activeTab === 'open' ? 'block' : 'none' }"
+      >
+        <table class="centered-table">
+          <thead class="th">
+            <tr>
+              <th>Material</th>
+
+              <th>Status</th>
+              <th>Progress</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let material of materials">
+              <td>{{ material.name }}</td>
+
+              <td>{{ material.status }}</td>
+              <td>
+                <mat-progress-bar
+                  class="custom-progress-bar"
+                  mode="determinate"
+                  [value]="parseProgress(material.progress)"
+                  [ngClass]="getProgressBarColor(material.progress)"
+                ></mat-progress-bar>
+              </td>
+              <td>{{ material.action }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- News tab -->
+      <div
+        id="News"
+        class="tabcontent"
+        [ngStyle]="{ display: activeTab === 'closed' ? 'block' : 'none' }"
+      >
+        <table class="centered-table">
+          <thead class="th">
+            <tr>
+              <th>Material</th>
+              <th>Status</th>
+              <th>Progress</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let material of materials">
+              <td>{{ material.name }}</td>
+              <td>{{ material.status }}</td>
+              <td>
+                <mat-progress-bar
+                  class="custom-progress-bar"
+                  mode="determinate"
+                  [value]="parseProgress(material.progress)"
+                  [ngClass]="getProgressBarColor(material.progress)"
+                ></mat-progress-bar>
+              </td>
+              <td>{{ material.action }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Contact tab -->
+      <div id="close" class="tabcontent">
+        <table class="centered-table">
+          <thead class="th">
+            <tr>
+              <th>Material</th>
+              <th>Status</th>
+              <th>Progress</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let material of materials">
+              <td>{{ material.name }}</td>
+              <td>{{ material.status }}</td>
+              <td>
+                <mat-progress-bar
+                  class="custom-progress-bar"
+                  mode="determinate"
+                  [value]="parseProgress(material.progress)"
+                  [ngClass]="getProgressBarColor(material.progress)"
+                ></mat-progress-bar>
+              </td>
+              <td>{{ material.action }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

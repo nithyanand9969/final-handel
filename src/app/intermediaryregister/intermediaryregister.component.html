@@ -1,0 +1,149 @@
+<div class="register-corporate">
+  <h1 class="user">
+    <u>Intermediary Registration</u>
+  </h1>
+  <form [formGroup]="intermediaryForm" (ngSubmit)="submitData()" enctype="multipart/form-data">
+    <table class="col-1">
+      <tr>
+        <td>
+          <label for="entityName">Entity Name</label>
+          <input
+            type="text"
+            class="form-input"
+           
+            formControlName="entityName"
+            name="EntityName"
+            placeholder="Please enter the Entity Name"
+          />
+        </td>
+        <td>
+          <label for="iecCode">IEC Code</label>
+          <input
+            type="text"
+            class="form-input"
+            formControlName="iecCode"
+            name="ieccode"
+            placeholder="Please enter the IEC Code"
+          />
+        </td>
+        <td>
+          <label for="mobileNumber">Mobile</label>
+          <input
+            type="text"
+            class="form-input"
+            formControlName="mobileNumber"
+            name="mobileNumber"
+            placeholder="Please enter the Mobile"
+          />
+        </td>
+      </tr>
+    </table>
+
+    <table class="col-2">
+      <tr>
+        <td>
+          <label for="userName">Name</label>
+          <input
+            type="text"
+            class="form-input"
+            formControlName="userName"
+            name="userName"
+            placeholder="Please enter the Name"
+          />
+        </td>
+        <td>
+          <label for="emailId">Email</label>
+          <input
+            type="text"
+            class="form-input"
+            formControlName="emailId"
+            name="emailId"
+            placeholder="Please enter the Email"
+          />
+        </td>
+        <td>
+          <label for="beneficiary">Beneficiary</label>
+          <input
+            type="text"
+            class="form-input"
+            formControlName="beneficiary"
+            name="beneficiary"
+            placeholder="Please enter user beneficiaryName"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <div class="upload">
+            <label for="gstFile" class="form-label"
+              >GST&nbsp;Document
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label
+            >
+            <input
+              id="gstFile"
+              class="file"
+              type="file"
+              name="gst"
+              accept="image/*"
+              (change)="onImageSelected($event)"
+            />
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <div class="upload">
+            <label for="financialFile" class="form-label"
+              >Financial Document &nbsp;</label
+            >
+            <input
+              id="financialFile"
+              class="file"
+              type="file"
+              name="financial"
+              accept="image/*"
+              (change)="onFinancialDocumentSelected($event)"
+            />
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <table class="col-3">
+      <tr>
+        <td>
+          <label for="accuntNumber">Account Number</label>
+          <input
+            type="text"
+            class="form-input"
+            formControlName="accuntNumber"
+            name="accuntNumber"
+            placeholder="Please enter the Account Number"
+          />
+        </td>
+        <td>
+          <label for="swiftCode">Swift Code</label>
+          <input
+            type="text"
+            class="form-input"
+            formControlName="swiftCode"
+            name="swiftCode"
+            placeholder="Please enter the Swift Code"
+          />
+        </td>
+      </tr>
+    </table>
+
+    <div class="row">
+      <button class="form-button" routerLink="/admin/user">Cancel</button>
+      <button class="form-button-1">Save</button>
+      <button class="form-button-2" type="submit">Create</button>
+    </div>
+  </form>
+  <div class="loading-overlay" *ngIf="loading">
+    <div class="loading-spinner">
+      <!-- Replace this area with your loading spinner or progress bar -->
+      <p>Loading...</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,90 @@
+<h2 class="title">Client Details.</h2>
+
+<table >
+  <tr>
+    <td>Entity Name</td>
+    <td>Entity Email</td>
+    <td> Gst Document</td>
+    <td> Financial Document</td>
+    <td>User Name </td>
+    <td>User Number</td>
+    <td> Beneficiary Name</td>
+    <td> Bank Account Details</td>
+    <td> Swift Code</td>
+    <td>Action</td>
+    
+  <tr>
+    <tr *ngFor="let user of corporateuser">
+        
+        <td>{{user.entityName}}</td>
+        <td>{{user.emailId}}</td>
+        <td>{{user.gstcertificates}}</td>
+        <td>{{user.finacialCetificates}}</td>
+        <td>{{user.userName}}</td>
+        <td>{{user.mobileNumber}}</td>
+        <td>{{user.beneficiary}}</td>
+        <td>{{user.accuntNumber}}</td>
+        <td>{{user.swiftCode}}</td>
+        <td>
+            <tr>
+              <i class="fa fa-pause" aria-hidden="true"></i>
+              <i class="fa-solid fa-stop"></i>
+            </tr>
+                      
+        </td>
+   
+       
+  </tr>
+  
+  <tr>
+   
+  </tr>
+  <tr>
+  
+   
+  </tr>
+  <tr>
+ 
+  
+  </tr>
+  
+  <tr>
+    <!-- <td>User Beneficiary Name</td> -->
+    <!-- <td>{{user.beneficiary}}</td> -->
+  
+  </tr>
+  <tr>
+     <!-- <td>User BankAccount Details</td> -->
+    <!-- <td>{{user.accuntNumber}}</td>
+    -->
+  </tr>
+  <tr>
+    <!-- <td>User  Swift Code</td> -->
+   <!-- <td>{{user.swiftCode}}</td> -->
+  
+ </tr>
+</table>
+
+ <!-- <h2 class="title">User List</h2>
+<ul>
+  <li *ngFor="let user of corporateuser" (click)="selectUser(user)" class="En">
+    {{ user.entityName }}
+  </li>
+</ul>
+
+<div *ngIf="selectedUser">
+  <h2 class="title">Selected User Details</h2>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Details</th>
+    </tr>
+    <tr>
+      <td>User Entity Name</td>
+      <td>{{ selectedUser.entityName }}</td>
+    </tr>
+    
+ </table>
+</div> -->
+
+

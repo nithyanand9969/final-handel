@@ -1,0 +1,28 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid black;
+    align-items: center;
+    position: relative;
+    margin-left: 0px;
+   
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    border: 1px solid black;
+  }
+  .title{
+    margin-left: 200px;
+    margin-top: 10px;
+  }
+ 
+ 
+  .En:hover{
+    cursor: pointer;
+  }
+ 
+ 

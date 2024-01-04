@@ -1,0 +1,41 @@
+
+<div class="container">
+    <h1 class="user">Intermediary Details</h1>
+  
+    <!-- Intermediary Details Table -->
+    <table class="intermediarydetails">
+      <thead>
+        <tr>
+          <th>Entity Name</th>
+          <th>Entity Email</th>
+          <th>GST Document</th>
+          <th>Financial Document</th>
+          <th>User Name</th>
+          <th>User Number</th>
+          <th>Beneficiary Name</th>
+          <th>Bank Account Details</th>
+          <th>Swift Code</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Loop through 'intermediaryEntities' array and display intermediary details -->
+        <tr *ngFor="let intermediaryEntities of getIntermediator[0]?.intermediaryEntities">
+          <td>{{ intermediaryEntities.entityName }}</td>
+          <td>{{ intermediaryEntities.emailId }}</td>
+          <td>{{ intermediaryEntities.gstcertificates }}</td>
+          <td>{{ intermediaryEntities.finacialCetificates }}</td>
+          <td>{{ intermediaryEntities.userName }}</td>
+          <td>{{ intermediaryEntities.mobileNumber }}</td>
+          <td>{{ intermediaryEntities.beneficiary }}</td>
+          <td>{{ intermediaryEntities.accountNumber }}</td>
+          <td>{{ intermediaryEntities.swiftCode }}</td>
+          <td>
+            <i class="fa fa-pause" aria-hidden="true"></i>
+            <i class="fa-solid fa-stop"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

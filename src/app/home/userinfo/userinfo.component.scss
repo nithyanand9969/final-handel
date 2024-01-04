@@ -1,0 +1,58 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid black;
+    align-items: center;
+    position: relative;
+    margin-left: 0px;
+   
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    border: 1px solid black;
+  }
+  .title{
+    margin-left: 200px;
+    margin-top: 10px;
+  }
+ 
+ 
+  .En:hover{
+    cursor: pointer;
+  }
+ 
+  .mat-icon {
+    border: none !important; /* Remove default border */
+    vertical-align: middle; /* Optional - align icons vertically */
+}
+
+.green-icon {
+  color: green !important; /* Set color as green */
+}
+
+/* Define custom class for red icon */
+.red-icon {
+  color: red !important; /* Set color as red */
+}
+.pointer {
+  cursor: pointer;
+}
+.icon-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+   
+  height: 60px;/* Remove the border */
+}
+.success-snackbar {
+  background-color: #4caf50; /* Background color for success message */
+  color: white; /* Text color for success message */
+  font-weight: bold; /* Bold text for the success message */
+  padding: 12px 20px; /* Padding for the success message */
+  border-radius: 5px; /* Border radius for the success message */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a box shadow */
+}

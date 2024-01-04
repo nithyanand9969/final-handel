@@ -1,0 +1,73 @@
+/* Styles for the form container */
+.register-corporate {
+  border-radius: 50px;
+  border-width: 1px;
+  border-color: gray;
+  padding: 20px;
+}
+
+/* Header style */
+.user {
+  color: rgb(99, 79, 79);
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* Table styles */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td {
+  border: 1px solid rgb(101, 97, 97);
+  padding: 8px;
+  min-height: 160px;
+}
+
+table thead {
+  background-color: blue;
+  color: antiquewhite;
+}
+
+table tbody {
+  background-color: rgb(1, 105, 139);
+  color: antiquewhite;
+}
+
+/* Style for form inputs */
+.form-input,
+.form-input-file {
+  height: 35px;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  border: 1px solid rebeccapurple;
+  color: rgb(49, 50, 51);
+  width: calc(100% - 22px);
+  width: 95%;
+}
+
+/* Styles for form buttons */
+.form-button,
+.form-button-1,
+.form-button-2 {
+  height: 35px;
+  border: 1px solid rgb(0, 121, 48);
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100px;
+  border-radius: 5px;
+  align-items: center;
+  margin-left: 150px;
+}
+
+.form-button-1 {
+  margin-left: 50px;
+  background-color: rgb(160, 255, 160);
+}
+
+.form-button-2 {
+  margin-left: 50px;
+  width: 150px;
+  background-color: rgb(160, 181, 226);
+}

@@ -1,0 +1,11 @@
+<!-- header.component.html -->
+<div class="header bg-blue-900 p-5">
+  <div class="flex justify-between">
+    <div class="logo text-2xl font-semibold text-white ml-28">
+      Handel.co.in
+    </div>
+    <div *ngIf="isLoggedIn && isAdmin" class="w-40 h-10 rounded-full bg-black flex items-center justify-center text-white">
+      <p>Welcome back, Admin <span *ngIf="loggedInUserName">{{ getFirstLetter() }}</span></p>
+    </div>
+  </div>
+</div>
