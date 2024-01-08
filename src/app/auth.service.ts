@@ -29,16 +29,38 @@ export class AuthService {
 
   loginUser(emailId: string, password: string): Observable<{ token: string }> {
     return this.http
-      .post<{ token: string }>(`${this.apiUrl}/auth/login`, {
-        emailId,
-        password,
-      })
+      .post<{ token: string }>(`${this.apiUrl}/auth/login`, { emailId, password })
       .pipe(
         tap((response: { token: string }) => {
           localStorage.setItem(this.JWT_TOKEN_KEY, response?.token);
+          // Fetch and store entity name after successful login
+          this.fetchAndStoreEntityName();
         })
       );
   }
+  fetchAndStoreEntityName(): void {
+    const jwtToken = localStorage.getItem(this.JWT_TOKEN_KEY);
+
+    if (!jwtToken) {
+      throw new Error('No token available');
+    }
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${jwtToken}`,
+    });
+
+    this.http
+      .get<any>(`${this.apiUrl}/user/entityName`, { headers })
+      .subscribe(
+        (response: any) => {
+          localStorage.setItem('entityName', response?.entityName);
+        },
+        (error) => {
+          console.error('Error fetching entity name:', error);
+        }
+      );
+  }
+
   logout(): Observable<any> {
     // Clear JWT token
     localStorage.removeItem(this.JWT_TOKEN_KEY);
