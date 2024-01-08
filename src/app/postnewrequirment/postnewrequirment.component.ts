@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { NetworkcallService } from '../service/networkcall.service';
 
+
 @Component({
   selector: 'app-postnewrequirment',
   templateUrl: './postnewrequirment.component.html',
@@ -24,13 +25,13 @@ export class PostnewrequirmentComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Fetch logged-in user information
+
     this.loggedInUserName = localStorage.getItem('userName') || '';
     this.initializeForm();
   }
 
   initializeForm(): void {
-    // Initialize the form with validation rules
+
     this.material = this.formBuilder.group({
       material: ['', Validators.required],
       supplier: ['', Validators.required],
@@ -44,18 +45,17 @@ export class PostnewrequirmentComponent implements OnInit {
     if (this.material.valid) {
       const formData = new FormData();
   
-      // Explicitly add each form field and its value to the FormData
+      // Populate formData with form values
       formData.append('material', this.material.get('material')?.value);
       formData.append('supplier', this.material.get('supplier')?.value);
       formData.append('payment', this.material.get('payment')?.value);
       formData.append('quantity', this.material.get('quantity')?.value);
       formData.append('unitprice', this.material.get('unitprice')?.value);
   
-      console.log('Form Data:', formData); // Log form data
+      console.log('Form Data:', formData);
   
       let creationAPIMethod: Observable<Object>;
   
-      // Determine which API method to call based on the selected material type
       if (this.selectedMaterial === 'domestic') {
         creationAPIMethod = this.networkService.createDomesticMaterial(formData);
       } else if (this.selectedMaterial === 'international') {
@@ -65,30 +65,30 @@ export class PostnewrequirmentComponent implements OnInit {
         return;
       }
   
-      const token = this.getToken(); // Retrieve token here
+      const jwtToken = this.getToken(); // Correctly retrieve the JWT token
   
-      if (token) {
+      if (jwtToken) {
         const headers = {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${jwtToken}`
         };
   
         creationAPIMethod.subscribe(
           (response) => {
             console.log(`${this.selectedMaterial} material created:`, response);
-            this.router.navigate(['/users']);
+            // Optionally, navigate to another page or perform actions on success
           },
           (error) => {
             console.error(`Error creating ${this.selectedMaterial} material:`, error);
-            // Handle error response (e.g., display an error message to the user)
+            // Handle errors here, display alerts, navigate to error pages, etc.
           }
         );
       } else {
         console.error('Token not available.');
-        this.router.navigate(['/login']);
+        // Handle the scenario when the token is not available
       }
     } else {
       console.error('Form is invalid.');
-      // Optionally, display an error message to the user
+      // Handle the scenario when the form is invalid
     }
   }
   
@@ -96,7 +96,7 @@ export class PostnewrequirmentComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  // Method to retrieve bearer token (replace this with your actual token retrieval logic)
+
   getToken(): string | null {
     return localStorage.getItem('accessToken');
   }

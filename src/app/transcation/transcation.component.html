@@ -1,6 +1,6 @@
 <div class="flex h-screen bg-gray-100">
   <!-- Sidebar -->
-  <div class="w- bg-blue-800 text-white">
+  <div class=" bg-blue-800 text-white">
     <app-user-side-nav></app-user-side-nav>
   </div>
 
@@ -37,21 +37,21 @@
           (click)="openTab('open')"
           [ngClass]="{ active: activeTab === 'open' }"
         >
-          Open
+          Open (25)
         </button>
         <button
           class="tablink closed"
           (click)="openTab('closed')"
           [ngClass]="{ active: activeTab === 'closed' }"
         >
-          Closed
+          Closed (1)
         </button>
         <button
           class="tablink cancel"
           (click)="openTab('cancel')"
           [ngClass]="{ active: activeTab === 'cancel' }"
         >
-          Cancel
+          Cancel (5)
         </button>
       </div>
 
@@ -153,3 +153,5 @@
     </div>
   </div>
 </div>
+
+

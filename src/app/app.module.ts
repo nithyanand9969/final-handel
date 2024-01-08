@@ -48,6 +48,9 @@ import {MatIconModule} from '@angular/material/icon'
 import { ToastrModule } from 'ngx-toastr';
 import { DropdownentityComponent } from './dropdownentity/dropdownentity.component';
 
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { ManageTranscationComponent } from './manage-transcation/manage-transcation.component';
+
 
 
 @NgModule({
@@ -88,6 +91,7 @@ import { DropdownentityComponent } from './dropdownentity/dropdownentity.compone
     TraderinfoComponent,
     InterinfoComponent,
     DropdownentityComponent,
+    ManageTranscationComponent,
   
     
     
@@ -108,6 +112,7 @@ import { DropdownentityComponent } from './dropdownentity/dropdownentity.compone
     ReactiveFormsModule,
     MatIconModule,
     ToastrModule.forRoot(),
+    NgxSpinnerModule,
 
 
 

@@ -47,4 +47,7 @@ export class LoginComponent {
         }
       );
   }
+  clearErrorMessage() {
+    this.errorMessage = ''; // Clear the error message when input is focused
+  }
 }

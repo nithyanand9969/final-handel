@@ -28,12 +28,7 @@ export class UserSideNavComponent {
 
   isDropdownActive: boolean = false;
 
-  // toggleTransaction() {
-  //   const demoAcc = document.getElementById("demoAcc");
-  //   if (demoAcc) {
-  //     demoAcc.classList.toggle("w3-hide"); // Toggle the "w3-hide" class
-  //   }
-  // }
+
   toggleDropdown(event: Event) {
     const dropdown = event.target as HTMLElement;
     dropdown.classList.toggle('active');

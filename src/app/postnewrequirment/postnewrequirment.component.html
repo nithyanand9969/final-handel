@@ -35,7 +35,7 @@
           <div class="mb-3">
             <label class="form-label p-5">Select Material Type:</label>
             <div
-              class="btn-group ml-5 mt-5 flex-1 flex-row"
+              class="btn-group ml-5 mt-5 flex-1 flex-row justify-between"
               role="group"
               aria-label="Material Type"
             >
@@ -48,8 +48,9 @@
                 value="domestic"
               />
               <label class="btn btn-outline-primary" for="domesticMaterial"
-                >Domestic Material</label
-              >
+                >&nbsp;&nbsp;Domestic Material</label
+              ><br>
+              <br>
 
               <input
                 type="radio"
@@ -60,16 +61,12 @@
                 value="international"
               />
               <label class="btn btn-outline-primary" for="internationalMaterial"
-                >International Material</label
+                > &nbsp;International Material</label
               >
             </div>
           </div>
 
-          <form
-            [formGroup]="material"
-            (ngSubmit)="submitData()"
-            enctype="multipart/form-data"
-          >
+          <form [formGroup]="material" (ngSubmit)="submitData()" enctype="multipart/form-data">
             <div class="flex">
               <div class="w-1/3 p-4">
                 <label for="material" class="text-gray-600">Material</label>
@@ -79,10 +76,8 @@
                   formControlName="material"
                   placeholder="Please enter Material"
                 />
-
-                <label for="supplier" class="text-gray-600 mt-4"
-                  >Supplier</label
-                >
+          
+                <label for="supplier" class="text-gray-600 mt-4">Supplier</label>
                 <input
                   type="text"
                   class="form-input"
@@ -90,10 +85,8 @@
                   name="supplier"
                   placeholder="Please Enter the Supplier Name"
                 />
-
-                <label for="paymentmode" class="text-gray-600 mt-4"
-                  >Terms Of Payment/Credit Period</label
-                >
+          
+                <label for="paymentmode" class="text-gray-600 mt-4">Terms Of Payment/Credit Period</label>
                 <input
                   type="text"
                   class="form-input"
@@ -102,7 +95,7 @@
                   placeholder="Please enter the Payment Mode"
                 />
               </div>
-
+          
               <div class="w-1/3 p-4">
                 <label for="quantity" class="text-gray-600">Quantity</label>
                 <input
@@ -112,10 +105,8 @@
                   name="quantity"
                   placeholder="Please enter Quantity"
                 />
-
-                <label for="unitprice" class="text-gray-600 mt-4"
-                  >Unit Price</label
-                >
+          
+                <label for="unitprice" class="text-gray-600 mt-4">Unit Price</label>
                 <input
                   type="text"
                   class="form-input"
@@ -125,16 +116,14 @@
                 />
               </div>
             </div>
-
+          
             <div class="flex justify-center">
-              <button class="form-button mr-2" routerLink="/users">
-                Cancel
-              </button>
+              <button class="form-button mr-2" routerLink="/users">Cancel</button>
               <button class="form-button-1 mr-2">Save</button>
               <button class="form-button-2" type="submit">Create</button>
             </div>
           </form>
-        </div>
+          </div>
       </div>
     </div>
   </div>

@@ -4,11 +4,26 @@
     <hr class="hr">
     <form class="login" (ngSubmit)="login()">
       <table class="col-1">
-        <input type="text" class="form-input" placeholder="Email" [(ngModel)]="emailId" name="emailId" required>
-        <input type="password" class="form-input" placeholder="Password" [(ngModel)]="password" name="password" required>
+        <input 
+          type="text" 
+          class="form-input" 
+          placeholder="Email" 
+          [(ngModel)]="emailId" 
+          name="emailId" 
+          required 
+          (focus)="clearErrorMessage()"
+        >
+        <input 
+          type="{{ password ? 'password' : 'text' }}" 
+          class="form-input" 
+          placeholder="Password" 
+          [(ngModel)]="password" 
+          name="password" 
+          required 
+          (focus)="clearErrorMessage()"
+        >
         <div class="btn">
           <button class="form-button" type="submit">
-           
             <span *ngIf="!loading">Submit</span>
             <span *ngIf="loading">Logging in...</span>
           </button>
@@ -23,6 +38,8 @@
       <div class="spinner"></div>
     </div>
     <!-- Display error message -->
-    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    <div class="error-message-container">
+      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    </div>
   </div>
 </div>
