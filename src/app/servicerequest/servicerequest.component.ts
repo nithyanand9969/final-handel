@@ -1,28 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-servicerequest',
   templateUrl: './servicerequest.component.html',
   styleUrls: ['./servicerequest.component.scss']
 })
-export class ServicerequestComponent { callbackData = {
-  name: '',
-  phoneNumber: '',
-  message: ''
-};
+export class ServicerequestComponent implements OnInit{ 
+  inputdata:any;
+  closemessage='closed used Directive';
 
-submitCallback() {
-  // Handle submission logic here (e.g., send callback request to backend)
-  console.log('Callback data:', this.callbackData);
-  // You can add logic to send the callback request to the server here
-  // Example: service calls, HTTP requests, etc.
-  // Once submitted, you might want to close the form.
-  this.closeCallbackForm();
-}
+  constructor(@Inject(MAT_DIALOG_DATA)public data:any,private ref:MatDialogRef<ServicerequestComponent> ,private builder:FormBuilder){
 
-closeCallbackForm() {
-  // Logic to close the callback form, hide the modal, etc.
-  // This might involve updating a property to toggle visibility or using a modal library
-  console.log('Closing callback form');
-}
+  }
+  ngOnInit(): void {
+   this.inputdata=this.data;
+  }
+
+  
+
+  closeserviceticket(){
+    this.ref.close('Closed Using Button');
+  }
+
+  myform=this.builder.group({
+    description:this.builder.control(''),
+    phone:this.builder.control(''),
+  });
+
+  Saveuser(){
+    console.log(this.myform.value);
+
+  }
 }

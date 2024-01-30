@@ -19,7 +19,7 @@ export class AuthService {
   getTotalintermediaryCount() {
     throw new Error('Method not implemented.');
   }
-  private apiUrl = 'http://localhost:8080';
+  private apiUrl = 'http://localhost:8008';
 
   private readonly JWT_TOKEN_KEY = 'jwtToken';
 
@@ -27,16 +27,25 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  loginUser(emailId: string, password: string): Observable<{ token: string }> {
+  loginUser(emailId: string, password: string): Observable<{ token: string, firstLogin: boolean }> {
     return this.http
-      .post<{ token: string }>(`${this.apiUrl}/auth/login`, { emailId, password })
+      .post<{ token: string, firstLogin: boolean }>(`${this.apiUrl}/auth/login`, { emailId, password })
       .pipe(
-        tap((response: { token: string }) => {
+        tap((response: { token: string, firstLogin: boolean }) => {
           localStorage.setItem(this.JWT_TOKEN_KEY, response?.token);
-          // Fetch and store entity name after successful login
-          this.fetchAndStoreEntityName();
+
+          if (this.isFirstLogin(response)) {
+            // Redirect to reset password page if it's the first login
+            // and the provided password is 'Mumbai@2024'
+            window.location.href = '/reset-password';
+          }
         })
       );
+  }
+
+  isFirstLogin(response: { firstLogin: boolean }): boolean {
+    // Check if it's the user's first login
+    return response?.firstLogin === true;
   }
   fetchAndStoreEntityName(): void {
     const jwtToken = localStorage.getItem(this.JWT_TOKEN_KEY);
@@ -53,7 +62,7 @@ export class AuthService {
       .get<any>(`${this.apiUrl}/user/entityName`, { headers })
       .subscribe(
         (response: any) => {
-          localStorage.setItem('entityName', response?.entityName);
+          localStorage.setItem('entityName', response?.entityName); // Store entity name in localStorage
         },
         (error) => {
           console.error('Error fetching entity name:', error);
@@ -86,6 +95,7 @@ export class AuthService {
 
     const headers = new HttpHeaders({
       Authorization: `Bearer ${jwtToken}`,
+      
     });
 
     return this.http

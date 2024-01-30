@@ -14,14 +14,14 @@
 
 table {
   margin-left: 80px;
-  border: 1.5px solid rgb(0, 0, 0);
+  border: 1.5px solid rgb(255, 255, 255);
 
   width: 100%;
 }
 
 table td,
 table th {
-  border: 1.5px solid rgb(0, 0, 0);
+  border: 1.5px solid rgb(255, 255, 255);
   padding: 10px;
   min-height: 170px;
   width: 100%; /* Set width to 100% for responsiveness */
@@ -47,6 +47,7 @@ table tbody {
 .active-intermediary {
   cursor: pointer;
   margin-left: 10px;
+  
 }
 
 .active-corporate:hover,
@@ -117,9 +118,9 @@ table tbody {
 }
 
 .active {
-  width: 180px;
+  width: 220px;
   font-size: medium;
-  padding-left: 40px;
+  padding-left: 50px;
 }
 
 /* Adjusted alignment for table data */

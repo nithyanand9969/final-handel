@@ -31,7 +31,13 @@ export class LoginComponent {
           if (domain === 'handel.co.in') {
             this.router.navigate(['/admin']); // Redirect to admin dashboard
           } else {
-            this.router.navigate(['/users']); // Redirect to user dashboard
+            // Check if it's the first login and the password is specific
+            if (this.authService.isFirstLogin(response) && this.password === 'Mumbai@2024') {
+              // Redirect to reset password page
+              this.router.navigate(['/reset-password']);
+            } else {
+              this.router.navigate(['/users']); // Redirect to user dashboard
+            }
           }
 
           this.loading = false; // Set loading to false after successful login
@@ -47,7 +53,8 @@ export class LoginComponent {
         }
       );
   }
+
   clearErrorMessage() {
-    this.errorMessage = ''; // Clear the error message when input is focused
+    this.errorMessage = ''; 
   }
 }

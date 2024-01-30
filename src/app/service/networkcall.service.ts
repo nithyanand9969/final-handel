@@ -7,51 +7,53 @@
   })
   export class NetworkcallService {
 
+  
+    private baseUrl: string = 'http://localhost:8008';
     constructor(public httpClient: HttpClient) {}
 
     createCorporateRegi(formData: FormData): Observable<any> {
-      return this.httpClient.post('http://localhost:8080/auth/uploadFileAndUser', formData);
+      return this.httpClient.post(`${this.baseUrl}/auth/uploadFileAndUser`, formData);
     }
 
     createTraderRegi(traderReg: FormData): Observable<Object> {
-      return this.httpClient.post('http://localhost:8080/trader/uploadFileAndUserTrader', traderReg);
+      return this.httpClient.post('${this.baseUrl}/trader/uploadFileAndUserTrader', traderReg);
     }
 
     createintermediaters(intermediaters:FormData):Observable<object>{
-      return this.httpClient.post('http://localhost:8080/intermediary/uploadFileAndUserIntermediary', intermediaters);
+      return this.httpClient.post('${this.baseUrl}/intermediary/uploadFileAndUserIntermediary', intermediaters);
     }
     createDomesticMaterial(domasticematerial: FormData): Observable<Object> {
-      return this.httpClient.post('http://localhost:8080/material/domesticMaterial', domasticematerial);
+      return this.httpClient.post('${this.baseUrl}/material/domesticMaterial', domasticematerial);
     }
     createInternationalMaterial(internationalamaterial: FormData): Observable<Object> {
-      return this.httpClient.post('http://localhost:8080/material/internationalMaterial', internationalamaterial);
+      return this.httpClient.post('${this.baseUrl}/material/internationalMaterial', internationalamaterial);
     }
    
     
   
 
     getCorporateUser(): Observable<any[]> {
-      return this.httpClient.get<any[]>('http://localhost:8080/home/adminUser');
+      return this.httpClient.get<any[]>('${this.baseUrl}/home/adminUser');
     }
 
     getTraderDetails(): Observable<any[]> {
-      return this.httpClient.get<any[]>('http://localhost:8080/home/adminUser');
+      return this.httpClient.get<any[]>('${this.baseUrl}/home/adminUser');
     }
 
     getIntermediatorDetails(): Observable<any[]> {
-      return this.httpClient.get<any[]>('http://localhost:8080/home/adminUser');
+      return this.httpClient.get<any[]>('${this.baseUrl}/home/adminUser');
     }
     getTotalUsers(): Observable<number> {
-      return this.httpClient.get<number>('http://localhost:8080/home/totalCount');
+      return this.httpClient.get<number>('${this.baseUrl}/home/totalCount');
     }
     getTotalcorporateCount():Observable<number>{
-      return this.httpClient.get<number>('http://localhost:8080/home/corporateCount');
+      return this.httpClient.get<number>('${this.baseUrl}/home/corporateCount');
     }
     getTotaltraderCount():Observable<number>{
-      return this.httpClient.get<number>('http://localhost:8080/home/traderCount');
+      return this.httpClient.get<number>('${this.baseUrl}/home/traderCount');
     }
     getTotalintermediaryCount():Observable<number>{
-      return this.httpClient.get<number>('http://localhost:8080/home/intermediaryCount');
+      return this.httpClient.get<number>('${this.baseUrl}/home/intermediaryCount');
     }
 
   }

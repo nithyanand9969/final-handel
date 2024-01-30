@@ -47,9 +47,11 @@ import { InterinfoComponent } from './home/interinfo/interinfo.component';
 import {MatIconModule} from '@angular/material/icon'
 import { ToastrModule } from 'ngx-toastr';
 import { DropdownentityComponent } from './dropdownentity/dropdownentity.component';
-
+import {MatDialogModule} from '@angular/material/dialog';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ManageTranscationComponent } from './manage-transcation/manage-transcation.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
@@ -113,6 +115,9 @@ import { ManageTranscationComponent } from './manage-transcation/manage-transcat
     MatIconModule,
     ToastrModule.forRoot(),
     NgxSpinnerModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatCheckboxModule
 
 
 

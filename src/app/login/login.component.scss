@@ -62,7 +62,7 @@
   max-width: 400px; /* Maximum width */
   margin: 50px auto; /* Center the card */
   margin-top: 50px;
-  height: 50vh;
+  height: 60vh;
 }
 
 .card:hover {
@@ -107,7 +107,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 9999;
+  z-index: 99;
   background-color: rgba(255, 255, 255, 0.7);
   display: flex;
   justify-content: center;
@@ -124,6 +124,8 @@
   width: 60px;
   height: 60px;
   animation: spin 1s linear infinite;
+  margin-left: 150px;
+  margin-top: 15px;
 }
 
 @keyframes spin {

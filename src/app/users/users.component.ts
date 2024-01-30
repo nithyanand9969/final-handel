@@ -42,7 +42,7 @@ export class UsersComponent implements OnInit {
                       label: 'Transactions (Bar)',
                       data: [10, 18],
                       borderWidth: 2,
-                      backgroundColor: 'rgba(255, 99, 132, 0.2)', // Bar color for the second dataset
+                      backgroundColor: 'rgba(30,58,138, 0.2)', // Bar color for the second dataset
                       borderColor: 'rgba(255, 99, 132, 1)',
                       type: 'bar',
                       yAxisID: 'bar-y-axis' // Assign this dataset to a separate y-axis
