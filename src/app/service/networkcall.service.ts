@@ -8,7 +8,8 @@
   export class NetworkcallService {
 
   
-    private baseUrl: string = 'http://localhost:8008';
+    private baseUrl: string = 'http://localhost:8090';
+    
     constructor(public httpClient: HttpClient) {}
 
     createCorporateRegi(formData: FormData): Observable<any> {
@@ -16,7 +17,7 @@
     }
 
     createTraderRegi(traderReg: FormData): Observable<Object> {
-      return this.httpClient.post('${this.baseUrl}/trader/uploadFileAndUserTrader', traderReg);
+      return this.httpClient.post(`${this.baseUrl}/trader/uploadFileAndUserTrader`, traderReg);
     }
 
     createintermediaters(intermediaters:FormData):Observable<object>{
@@ -29,7 +30,10 @@
       return this.httpClient.post('${this.baseUrl}/material/internationalMaterial', internationalamaterial);
     }
    
-    
+    setPassword(email: string, newPassword: string, confirmPassword: string): Observable<any> {
+      const body = { emailId: email, newPassword: newPassword, confirmPassword: confirmPassword };
+      return this.httpClient.post<any>(`${this.baseUrl}/setPassword`, body);
+    }
   
 
     getCorporateUser(): Observable<any[]> {

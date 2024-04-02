@@ -45,7 +45,6 @@ table {
   display: flex;
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
-   
   height: 60px;/* Remove the border */
 }
 .success-snackbar {
@@ -55,4 +54,21 @@ table {
   padding: 12px 20px; /* Padding for the success message */
   border-radius: 5px; /* Border radius for the success message */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a box shadow */
+}
+.form-input{
+
+  border: 1px solid #555;
+  margin-left: 90px;
+
+}
+.form-input-b {
+  margin-left: 50px;
+  border: 1px solid #555;
+}
+.form-input-n{
+  margin-left: 78px;
+  border: 1px solid #555;
+}
+.modal-body{
+  padding: 10px 10px 10px 10px;
 }

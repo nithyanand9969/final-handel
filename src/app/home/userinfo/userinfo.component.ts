@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/auth.service';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-userinfo',
@@ -20,7 +20,7 @@ export class UserinfoComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private toastr: ToastrService
+ 
   ) {}
 
   ngOnInit(): void {
@@ -42,16 +42,15 @@ export class UserinfoComponent {
   updateEntity(entity: any): void {
     if (entity && entity.corporateId) {
       this.authService.updateCorporate(entity).subscribe(
-        () => {
+        (data) => {
           this.closeEditModal();
           this.fetchCorporateUsers();
-          this.toastr.success('Entity updated successfully!', 'Success');
-          console.log('Redirecting...');
-          this.router.navigate(['/admin/userinfo']); // Redirect after successful update
+          console.log(data);
+          this.router.navigate(['/admin/userinfo']); 
         },
         (error) => {
           console.error('Error updating entity:', error);
-          this.toastr.error('Failed to update entity!', 'Error');
+          
         }
       );
     } else {
@@ -60,7 +59,7 @@ export class UserinfoComponent {
   }
   openEditModal(entity: any): void {
     this.selectedEntity = entity;
-    this.showEditModal = true; // Set showEditModal to true to display the edit modal
+    this.showEditModal = true; 
   }
 
   closeEditModal(): void {
@@ -68,28 +67,7 @@ export class UserinfoComponent {
  
   }
 
-  deleteEntity(): void {
-    if (this.selectedEntity && this.selectedEntity.corporateId) {
-      this.authService.deleteCorporate(this.selectedEntity.corporateId).subscribe(
-        () => {
-          this.closeModal();
-          this.fetchCorporateUsers();
-          this.toastr.success('Entity deleted successfully!', 'Success');
-          this.router.navigate(['/admin/userinfo']);
-          console.log('Redirecting...');
-           // Redirect after successful deletion
-        },
-        (error) => {
-          console.error('Error deleting entity:', error);
-          this.toastr.error('Failed to delete entity!', 'Error');
-        }
-      );
-    } else {
-      console.error('Selected entity or corporateId is missing.');
-    }
-  }
-
-  openModal(registrationEntity: any): void {
+    openModal(registrationEntity: any): void {
     this.selectedEntity = registrationEntity;
     this.showModal = true;
   }
@@ -98,6 +76,30 @@ export class UserinfoComponent {
     this.showModal = false;
     this.confirmDelete = false;
   }
-  
 
+  pauseEntity(entity: any): void {
+    if (!entity || !entity.corporateId) {
+      console.error('Selected entity or corporateId is missing.');
+      return;
+    }
+  
+    const confirmation = confirm('Are you sure you want to pause this account?'); 
+    
+    if (confirmation) {
+      this.authService.pauseCorporate(entity.corporateId).subscribe(
+        (data) => {
+          console.log('Entity paused successfully:', data);
+        
+          this.fetchCorporateUsers();
+        },
+        (error) => {
+          console.error('Error pausing entity:', error);
+         
+        }
+      );
+    }
+  }
+  
+  
+  
 }

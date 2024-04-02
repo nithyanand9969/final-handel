@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
 
 @Component({
@@ -14,12 +15,12 @@ export class UserComponent implements OnInit {
   getTraderDetails: any;
   getIntermediator: any; // Corrected variable name
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService,private router:Router) {}
 
   ngOnInit(): void {
     this.fetchCorporateUsers();
     this.fetchTraderDetails();
-    this.fetchIntermediatorDetails(); // Corrected method name
+    this.fetchIntermediatorDetails();
   }
  
   fetchCorporateUsers(): void {
@@ -46,7 +47,7 @@ export class UserComponent implements OnInit {
     );
   }
   
-  fetchIntermediatorDetails(): void { // Corrected method name
+  fetchIntermediatorDetails(): void { 
     this.authService.getIntermediatorDetails().subscribe(
       (res: any) => {
         this.getIntermediator = res;
@@ -58,8 +59,15 @@ export class UserComponent implements OnInit {
     );
   }
   
+  
   selectUser(user: any): void {
     this.selectedUser = user;
-    // Perform actions on user selection if needed
+ 
+    if (this.selectedUser) {
+      console.log('Selected user ID:', this.selectedUser.id);
+      this.router.navigate(['/userdetails', this.selectedUser.id]);
+    }
   }
+
+
 }

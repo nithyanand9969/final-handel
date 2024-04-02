@@ -1,11 +1,14 @@
-# Stage 1: Build the Angular application
-FROM node:latest AS build
+
+FROM node:16 AS build
 WORKDIR /app
 COPY package.json package-lock.json /app/
 RUN npm install
 COPY . /app/
 RUN npm run build
 
-# Stage 2: Create a production-ready image with NGINX
 FROM nginx:latest
 COPY --from=build /dist/* /usr/share/nginx/html/
+
+EXPOSE 8000
+
+CMD ["nginx","-g","daemon off;"]

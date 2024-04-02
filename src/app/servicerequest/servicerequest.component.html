@@ -1,37 +1,26 @@
-<form [formGroup]="myform" (ngSubmit)="Saveuser()">
+<form [formGroup]="myform" (ngSubmit)="Saveuser()" class="form-container">
   <h1 mat-dialog-title>{{ inputdata.title }}</h1>
+  
   <div mat-dialog-content>
-    <mat-form-field>
+    <mat-form-field class="form-field">
       <mat-label>Description</mat-label>
       <textarea
         matInput
         formControlName="description"
         placeholder="Please Provide Details"
-        class="w-70%"
+        class="w-full"
       ></textarea>
     </mat-form-field>
 
-    <mat-form-field>
-      <mat-label
-        formControlName="phone"
-      >Phone</mat-label>
-      <input matInput placeholder="Please Provide Phone" class="w-70%" />
+    <mat-form-field class="form-field">
+      <mat-label formControlName="phone">Phone</mat-label>""
+      <input matInput placeholder="Please Provide Phone" class="w-full" />
     </mat-form-field>
   </div>
 
-  <div mat-dialog-actions class="py-2 justify-between flex gap-1">
-    <button mat-raised-button color="primary">Save</button>
-    <button
-      (click)="closeserviceticket()"
-      class="bg-red-800 text-white rounded py-1 px-1"
-    >
-      Close
-    </button>
-    <button
-      class="bg-orange-600 text-white py-1 px-1 rounded"
-      [mat-dialog-close]="closemessage"
-    >
-      Cancel
-    </button>
+  <div mat-dialog-actions class="py-2 px-2 justify-between flex gap-2">
+    <button class="bg-green-800 text-white rounded py-1 px-1">Save</button>
+    <button (click)="closeserviceticket()" class="bg-red-800 text-white rounded py-1 px-1">Close</button>
+    <button class="bg-orange-600 text-white py-1 px-1 rounded" [mat-dialog-close]="closemessage">Cancel</button>
   </div>
 </form>

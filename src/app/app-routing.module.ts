@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
-import { AuthGuard } from './auth.guard'; // Import your AuthGuard here
+import { AuthGuard } from './auth.guard';
 
 import { AdminComponent } from './admin/admin.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
@@ -22,6 +22,7 @@ import { SettingComponent } from './setting/setting.component';
 import { TraderinfoComponent } from './home/traderinfo/traderinfo.component';
 import { InterinfoComponent } from './home/interinfo/interinfo.component';
 import { ManageTranscationComponent } from './manage-transcation/manage-transcation.component';
+import { UserdetailsComponent } from './home/user/userdetails/userdetails.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -34,14 +35,13 @@ const routes: Routes = [
   { path: 'manage-transcation', component: ManageTranscationComponent },
   { path: 'setting', component: SettingComponent },
 
-  // ... other routes without authentication
-
   {
     path: 'admin',
     component: AdminComponent,
     canActivate: [AuthGuard],
     children: [
       { path: 'user', component: UserComponent },
+      {path:'userdetails/:id',component:UserdetailsComponent},
       { path: 'corporateregister', component: CorporateregisterComponent },
       { path: 'traderregister', component: TraderregisterComponent },
       { path: 'intermediator', component: IntermediaryregisterComponent },
@@ -49,11 +49,9 @@ const routes: Routes = [
       { path: 'traderinfo', component: TraderinfoComponent },
       { path: 'interinfo', component: InterinfoComponent },
       { path: 'corporateusers', component: CorporateUsersComponent },
-
-      // ... other child routes that require authentication
     ],
   },
-  { path: 'users', component: UsersComponent, canActivate: [AuthGuard] }, // Protect this route with AuthGuard
+  { path: 'users', component: UsersComponent, canActivate: [AuthGuard] },
   { path: 'side-nav', component: SideNavComponent, canActivate: [AuthGuard] },
   {
     path: 'user-side-nav',
@@ -61,7 +59,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
 
-  { path: 'logout', component: LogoutComponent }, // Protect this route with AuthGuard
+  { path: 'logout', component: LogoutComponent },
 ];
 
 @NgModule({

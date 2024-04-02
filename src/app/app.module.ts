@@ -52,6 +52,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { ManageTranscationComponent } from './manage-transcation/manage-transcation.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { UserdetailsComponent } from './home/user/userdetails/userdetails.component';
 
 
 
@@ -94,6 +95,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     InterinfoComponent,
     DropdownentityComponent,
     ManageTranscationComponent,
+    UserdetailsComponent,
   
     
     

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { NetworkcallService } from '../service/networkcall.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -13,23 +15,25 @@ export class ResetPasswordComponent{
   errorMessage: string = '';
   loading: boolean = false; // Added loading flag for password reset
 
-  constructor() {}
+  constructor(private router: Router, private networkService: NetworkcallService) { }
 
   resetPassword() {
-    this.loading = true; // Set loading to true while the password reset request is ongoing
-
-    // Here, you would implement the logic to reset the password.
-    // This is a basic example; you might need to integrate with your backend or authentication service.
     if (this.newPassword === this.confirmPassword) {
-      // Simulate a password reset process (replace this with your actual logic)
-      setTimeout(() => {
-        this.passwordResetSuccess = true; // Simulated success
-        this.loading = false; // Set loading to false after successful password reset
-      }, 2000); // Simulating a 2-second delay, replace this with your actual API call
+      this.networkService.setPassword(this.user.email, this.newPassword, this.confirmPassword)
+        .subscribe(response => {
+          // Handle response as needed
+          console.log(response);
+          this.passwordResetSuccess = true;
+          // Other actions after password reset success
+        }, error => {
+          // Handle error
+          console.error(error);
+          // Other actions on error
+        });
     } else {
-      // Passwords don't match, handle this scenario (show an error, for instance)
       console.log('Passwords do not match');
-      this.loading = false; // Set loading to false if password reset fails
+      // Handle passwords not matching
     }
   }
+
 }

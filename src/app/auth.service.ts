@@ -7,6 +7,7 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AuthService {
+  [x: string]: any;
   getTotalUsers() {
     throw new Error('Method not implemented.');
   }
@@ -19,34 +20,50 @@ export class AuthService {
   getTotalintermediaryCount() {
     throw new Error('Method not implemented.');
   }
-  private apiUrl = 'http://localhost:8008';
-
+  isFirstLogin(response: { firstLogin: boolean }): boolean {
+    return response?.firstLogin === true;
+  }
+  private apiUrl = 'http://localhost:8090';
   private readonly JWT_TOKEN_KEY = 'jwtToken';
-
   private isAdmin: boolean = false;
 
   constructor(private http: HttpClient) {}
-
-  loginUser(emailId: string, password: string): Observable<{ token: string, firstLogin: boolean }> {
-    return this.http
-      .post<{ token: string, firstLogin: boolean }>(`${this.apiUrl}/auth/login`, { emailId, password })
-      .pipe(
-        tap((response: { token: string, firstLogin: boolean }) => {
-          localStorage.setItem(this.JWT_TOKEN_KEY, response?.token);
-
-          if (this.isFirstLogin(response)) {
-            // Redirect to reset password page if it's the first login
-            // and the provided password is 'Mumbai@2024'
-            window.location.href = '/reset-password';
-          }
-        })
-      );
+  
+  loginUser(emailId: string, password: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/auth/login`, { emailId, password }).pipe(
+      tap((response: { token: string,entityName:string, firstLogin: boolean, loginCount: string }) => {
+       console.log(response,'nithyanand');
+        localStorage.setItem(this.JWT_TOKEN_KEY, response?.token);
+        localStorage.setItem('entityName', response?.entityName);
+      })
+    );
   }
 
-  isFirstLogin(response: { firstLogin: boolean }): boolean {
-    // Check if it's the user's first login
-    return response?.firstLogin === true;
+
+
+  private getDetails(url: string): Observable<any> {
+    const jwtToken = localStorage.getItem(this.JWT_TOKEN_KEY);
+
+    if (!jwtToken) {
+      return throwError(new Error('No token available'));
+    }
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${jwtToken}`,
+    });
+
+    return this.http.get(url, { headers, withCredentials: true }).pipe(
+      tap(
+        (response) => console.log('Details:', response),
+        (error) => console.error('Error fetching details:', error)
+      ),
+      catchError((error) => {
+        console.error('HTTP error occurred:', error);
+        return throwError(error);
+      })
+    );
   }
+
   fetchAndStoreEntityName(): void {
     const jwtToken = localStorage.getItem(this.JWT_TOKEN_KEY);
 
@@ -62,7 +79,7 @@ export class AuthService {
       .get<any>(`${this.apiUrl}/user/entityName`, { headers })
       .subscribe(
         (response: any) => {
-          localStorage.setItem('entityName', response?.entityName); // Store entity name in localStorage
+          localStorage.setItem('entityName', response?.entityName); 
         },
         (error) => {
           console.error('Error fetching entity name:', error);
@@ -167,28 +184,21 @@ export class AuthService {
     return this.http.get<number>(`${this.apiUrl}/home/totalCount`, headers);
   }
 
-  deleteCorporate(corporateId: number): Observable<any> {
+  pauseCorporate(corporateId: number): Observable<any> {
     const jwtToken = localStorage.getItem(this.JWT_TOKEN_KEY);
-
+ 
     if (!jwtToken) {
       throw new Error('No token available');
     }
-
+ 
     const headers = new HttpHeaders({
       Authorization: `Bearer ${jwtToken}`,
+     
     });
-
-    return this.http
-      .delete<any>(`${this.apiUrl}/home/deleteCorporate/${corporateId}`, {
-        headers,
-      })
-      .pipe(
-        catchError((error) => {
-          console.error('HTTP error occurred:', error);
-          return throwError(error);
-        })
-      );
+    const deleteUrl = `${this.apiUrl}/home/deleteCorporate/${corporateId}`;
+    return this.http.post<any>(deleteUrl, {}, { headers: headers } );
   }
+
 
   deleteTrader(traderId: number): Observable<any> {
     const jwtToken = localStorage.getItem(this.JWT_TOKEN_KEY);
@@ -206,7 +216,7 @@ export class AuthService {
     return this.http.delete<any>(deleteUrl, { headers }).pipe(
       catchError((error: any) => {
         console.error('Error deleting trader:', error);
-        // Add more specific error handling or throw the error if needed
+      
         return throwError('Deletion failed');
       })
     );
@@ -282,14 +292,14 @@ export class AuthService {
       Authorization: `Bearer ${jwtToken}`,
     });
 
-    // You need to replace this URL with your API endpoint to update corporate entity
+    
     const updateUrl = `${this.apiUrl}/corporate/${entity.corporateId}/update`;
 
     return this.http.put<any>(updateUrl, entity, { headers }).pipe(
       catchError((error) => {
         console.error('Error updating corporate entity:', error);
         return throwError('Failed to update corporate entity');
-      })
+      })  
     );
   }
 
